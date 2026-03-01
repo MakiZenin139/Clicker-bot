@@ -412,7 +412,7 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 
   <div class="progress-wrap">
     <div class="progress-label">
-      <span>До бонуса +50 монет</span>
+      <span>До 50 монет (1000 кликов)</span>
       <span id="progressLabel">0 / 1000</span>
     </div>
     <div class="progress-bar">
@@ -422,7 +422,7 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 
   <div class="mult-row">
     <div class="mult-info">💎 Монет за тап</div>
-    <div class="mult-val" id="multVal">+1.0</div>
+    <div class="mult-val" id="multVal">+0.05</div>
     <div class="mult-info">🏆 Следующий бонус</div>
     <div class="mult-val" id="nextBonus">LVL 5</div>
   </div>
@@ -758,8 +758,8 @@ function renderTopList(containerId, players, field, icon, myUid){
 function escHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
 // ── Levels ─────────────────────────────────────────────
-function getLevel(clicks){ return Math.floor(clicks / 500) + 1; }
-function getMultiplier(level){ return parseFloat((1.0 + (level - 1) * 0.1).toFixed(1)); }
+function getLevel(clicks){ return Math.floor(clicks / 1000) + 1; }
+function getMultiplier(level){ return parseFloat((0.05 * level).toFixed(2)); }
 function getNextBonusLevel(level){ return Math.ceil(level / 5) * 5; }
 
 // ── Audio ──────────────────────────────────────────────
@@ -829,14 +829,6 @@ function doClick(cx, cy){
   if(navigator.vibrate) navigator.vibrate(8);
   if(tg?.HapticFeedback) tg.HapticFeedback.impactOccurred('light');
 
-  // ✅ 1000 кликов = +50 монет
-  if(S.clicks % 1000 === 0){
-    S.coins = parseFloat((S.coins + 50).toFixed(1));
-    sndCoin();
-    if(tg?.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
-    showToast('🎉 +50 монет за 1000 кликов!');
-  }
-
   if(currLevel > prevLevel && currLevel > S.maxLevel){
     S.maxLevel = currLevel;
     onLevelUp(currLevel);
@@ -844,7 +836,7 @@ function doClick(cx, cy){
 
   const f = document.createElement('div');
   f.className = 'float';
-  f.textContent = '+' + mult;
+  f.textContent = '+' + mult.toFixed(2);
   f.style.left = (cx + (Math.random()-.5)*44) + 'px';
   f.style.top  = (cy - 14) + 'px';
   document.body.appendChild(f);
@@ -870,10 +862,10 @@ function onLevelUp(lvl){
     S.coins = parseFloat((S.coins + bonus).toFixed(1));
     save();
     document.getElementById('lvlupSub').textContent    = 'Бонусный уровень! 🌟';
-    document.getElementById('lvlupReward').textContent = `+${bonus} монет • тап теперь +${mult}`;
+    document.getElementById('lvlupReward').textContent = `+${bonus} монет • тап теперь +${mult.toFixed(2)}`;
   } else {
     document.getElementById('lvlupSub').textContent    = 'Ты становишься сильнее!';
-    document.getElementById('lvlupReward').textContent = `Тап теперь приносит ${mult} монеты`;
+    document.getElementById('lvlupReward').textContent = `Тап теперь приносит ${mult.toFixed(2)} монеты`;
   }
   document.getElementById('lvlup').classList.add('show');
 }
@@ -896,13 +888,13 @@ function updateGame(){
   const mult = getMultiplier(lvl);
   const nb   = getNextBonusLevel(lvl);
   document.getElementById('clickCount').textContent    = S.clicks.toLocaleString();
-  document.getElementById('coinCount').textContent     = S.coins.toFixed(1);
+  document.getElementById('coinCount').textContent     = S.coins.toFixed(2);
   document.getElementById('rubCount').textContent      = Math.floor(S.coins/10);
   const ic = S.clicks % 1000;
   document.getElementById('progressFill').style.width  = (ic/10)+'%';
   document.getElementById('progressLabel').textContent  = `${ic} / 1 000`;
   document.getElementById('levelBadge').textContent     = `⚡ LVL ${lvl}`;
-  document.getElementById('multVal').textContent        = `+${mult}`;
+  document.getElementById('multVal').textContent        = `+${mult.toFixed(2)}`;
   document.getElementById('nextBonus').textContent      = `LVL ${nb}`;
 }
 
@@ -914,9 +906,9 @@ function updateProfile(){
       document.getElementById('avatar').innerHTML=`<img src="${tgUser.photo_url}">`;
   }
   document.getElementById('psClicks').textContent = S.clicks.toLocaleString();
-  document.getElementById('psCoins').textContent  = S.coins.toFixed(1);
+  document.getElementById('psCoins').textContent  = S.coins.toFixed(2);
   document.getElementById('psWd').textContent     = S.withdrawn;
-  document.getElementById('balAmt').textContent   = S.coins.toFixed(1);
+  document.getElementById('balAmt').textContent   = S.coins.toFixed(2);
   document.getElementById('balRub').textContent   = Math.floor(S.coins/10);
 
   const r=getRank(S.clicks), nx=getNext(S.clicks);
@@ -927,11 +919,11 @@ function updateProfile(){
     :'Максимальный ранг 👑';
 
   // ✅ ИЗМЕНЕНО: минимум 50 монет
-  const ok = Math.floor(S.coins) >= 50;
+  const ok = S.coins >= 50;
   document.getElementById('wdBtn').disabled = !ok;
   document.getElementById('wdNote').textContent = ok
     ?`Доступно: ${S.coins.toFixed(1)} монет ≈ ${Math.floor(S.coins/10)} ₽`
-    :`Нужно ещё ${(50 - Math.floor(S.coins))} монет для вывода`;
+    :`Нужно ещё ${(50 - S.coins).toFixed(2)} монет для вывода`;
 
   const hl=document.getElementById('histList');
   if(!S.history.length){
