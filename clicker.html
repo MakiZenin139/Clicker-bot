@@ -74,7 +74,7 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 @keyframes nebulaDrift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(20px,15px) scale(1.1)}}
 
 /* ════ LAYOUT ════ */
-.tabs{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(5,3,15,.92);border-top:1px solid rgba(255,215,0,.12);backdrop-filter:blur(12px);}
+.tabs{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(5,3,15,.92);border-top:1px solid rgba(255,215,0,.12);backdrop-filter:blur(12px);padding-bottom:env(safe-area-inset-bottom, 16px);}
 .tab{flex:1;padding:11px 0 13px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;}
 .tab-icon{font-size:22px;}
 .tab-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.3);transition:color .2s;}
@@ -584,7 +584,7 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 // 2. Settings → API → скопируй Project URL и anon key
 // 3. Вставь ниже
 // ══════════════════════════════════════════════════
-const SUPABASE_URL  = 'https://knicearqjyrukjnfpv.supabase.co';   // ← 'https://xxxx.supabase.co'
+const SUPABASE_URL  = 'https://knicearqjyrukjnfpvcq.supabase.co';   // ← 'https://xxxx.supabase.co'
 const SUPABASE_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtuaWNlYXJxanlydWtqbmZwdmNxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIzMjE1MTIsImV4cCI6MjA4Nzg5NzUxMn0.Vcy8i856FKiPqLlQi9pWZ6WdeejVEhqsaInYhBA00XU';   // ← anon public key
 
 // ── Telegram ───────────────────────────────────────────
