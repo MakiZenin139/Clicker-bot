@@ -518,7 +518,7 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 
   <!-- ✅ ИЗМЕНЕНО: min="50" -->
   <div class="wd-row">
-    <input class="wd-input" type="number" id="wdInput" placeholder="Количество монет" min="50">
+    <input class="wd-input" type="number" id="wdInput" placeholder="Количество монет" min="50" step="50">
     <button class="wd-btn" id="wdBtn" disabled>ВЫВЕСТИ</button>
   </div>
   <!-- ✅ ИЗМЕНЕНО: 50+ монет -->
@@ -576,33 +576,33 @@ if(tg){ tg.ready(); tg.expand(); tg.setHeaderColor('#05030f'); tg.setBackgroundC
 
 // ── State ──────────────────────────────────────────────
 let S = {
-  clicks:    parseInt(localStorage.getItem('cc_clicks')    || '0'),
-  coins:     parseFloat(localStorage.getItem('cc_coins')   || '0'),
-  withdrawn: parseInt(localStorage.getItem('cc_withdrawn') || '0'),
-  history:   JSON.parse(localStorage.getItem('cc_history') || '[]'),
-  maxLevel:  parseInt(localStorage.getItem('cc_maxlvl')    || '1'),
+  clicks:    parseInt(localStorage.getItem('cc2_clicks')    || '0'),
+  coins:     parseFloat(localStorage.getItem('cc2_coins')   || '0'),
+  withdrawn: parseInt(localStorage.getItem('cc2_withdrawn') || '0'),
+  history:   JSON.parse(localStorage.getItem('cc2_history') || '[]'),
+  maxLevel:  parseInt(localStorage.getItem('cc2_maxlvl')    || '1'),
 };
 
 const tgUser = tg?.initDataUnsafe?.user;
-const MY_ID   = tgUser?.id ? String(tgUser.id) : ('local_' + (localStorage.getItem('cc_localid') || (() => {
+const MY_ID   = tgUser?.id ? String(tgUser.id) : ('local_' + (localStorage.getItem('cc2_localid') || (() => {
   const id = Math.random().toString(36).slice(2,10);
-  localStorage.setItem('cc_localid', id);
+  localStorage.setItem('cc2_localid', id);
   return id;
 })()));
 const MY_NAME = tgUser
   ? (tgUser.first_name + (tgUser.last_name ? ' ' + tgUser.last_name : ''))
-  : (localStorage.getItem('cc_name') || 'Игрок');
+  : (localStorage.getItem('cc2_name') || 'Игрок');
 
-if(!localStorage.getItem('cc_name')) localStorage.setItem('cc_name', MY_NAME);
+if(!localStorage.getItem('cc2_name')) localStorage.setItem('cc2_name', MY_NAME);
 
 // ── Save ──────────────────────────────────────────────
 let _fbSaveTimer = null;
 const save = () => {
-  localStorage.setItem('cc_clicks',    S.clicks);
-  localStorage.setItem('cc_coins',     S.coins.toFixed(1));
-  localStorage.setItem('cc_withdrawn', S.withdrawn);
-  localStorage.setItem('cc_history',   JSON.stringify(S.history));
-  localStorage.setItem('cc_maxlvl',    S.maxLevel);
+  localStorage.setItem('cc2_clicks',    S.clicks);
+  localStorage.setItem('cc2_coins',     S.coins.toFixed(1));
+  localStorage.setItem('cc2_withdrawn', S.withdrawn);
+  localStorage.setItem('cc2_history',   JSON.stringify(S.history));
+  localStorage.setItem('cc2_maxlvl',    S.maxLevel);
   clearTimeout(_fbSaveTimer);
   _fbSaveTimer = setTimeout(fbSavePlayer, 10000);
 };
@@ -940,9 +940,10 @@ function updateProfile(){
 // ── Withdraw ──────────────────────────────────────────
 document.getElementById('wdBtn').addEventListener('click', async () => {
   const inputVal = parseFloat(document.getElementById('wdInput').value);
-  let amt = isNaN(inputVal) ? Math.floor(S.coins) : Math.min(Math.floor(inputVal), Math.floor(S.coins));
-  // ✅ ИЗМЕНЕНО: минимум 50
+  let amt = isNaN(inputVal) ? 0 : Math.floor(inputVal);
   if(amt < 50){ showToast('Минимум 50 монет!'); return; }
+  if(amt % 50 !== 0){ showToast('Можно вывести только круглые числа: 50, 100, 150...'); return; }
+  if(amt > Math.floor(S.coins)){ showToast('Недостаточно монет!'); return; }
   S.coins = parseFloat((S.coins - amt).toFixed(1));
   S.withdrawn += amt;
   const d = new Date();
