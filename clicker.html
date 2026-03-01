@@ -531,6 +531,16 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
   </div>
 </div>
 
+
+<!-- ═══ SHOP ═══ -->
+<div class="page" id="page-shop">
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding-top:80px;">
+    <div style="font-size:64px;margin-bottom:20px;">🛒</div>
+    <div style="font-family:'Orbitron',sans-serif;font-size:22px;font-weight:900;color:var(--gold);margin-bottom:12px;letter-spacing:2px;">МАГАЗИН</div>
+    <div style="font-size:14px;color:rgba(255,255,255,.35);letter-spacing:2px;text-transform:uppercase;">В разработке...</div>
+  </div>
+</div>
+
 <!-- TABS -->
 <div class="tabs">
   <div class="tab active" id="tab-game" onclick="switchTab('game')">
@@ -541,6 +551,11 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
   <div class="tab" id="tab-top" onclick="switchTab('top')">
     <div class="tab-icon">🏆</div>
     <div class="tab-label" style="font-size:8px;letter-spacing:0.3px;white-space:nowrap;">Топ игроков</div>
+    <div class="tab-line"></div>
+  </div>
+  <div class="tab" id="tab-shop" onclick="switchTab('shop')">
+    <div class="tab-icon">🛒</div>
+    <div class="tab-label">Магазин</div>
     <div class="tab-line"></div>
   </div>
   <div class="tab" id="tab-profile" onclick="switchTab('profile')">
@@ -576,33 +591,41 @@ if(tg){ tg.ready(); tg.expand(); tg.setHeaderColor('#05030f'); tg.setBackgroundC
 
 // ── State ──────────────────────────────────────────────
 let S = {
-  clicks:    parseInt(localStorage.getItem('cc2_clicks')    || '0'),
-  coins:     parseFloat(localStorage.getItem('cc2_coins')   || '0'),
-  withdrawn: parseInt(localStorage.getItem('cc2_withdrawn') || '0'),
-  history:   JSON.parse(localStorage.getItem('cc2_history') || '[]'),
-  maxLevel:  parseInt(localStorage.getItem('cc2_maxlvl')    || '1'),
+  clicks:    parseInt(localStorage.getItem('cc3_clicks')    || '0'),
+  coinsCents: parseInt(localStorage.getItem('cc3_coinsCents') || '0'), // монеты * 100
+  withdrawn: parseInt(localStorage.getItem('cc3_withdrawn') || '0'),
+  history:   JSON.parse(localStorage.getItem('cc3_history') || '[]'),
+  maxLevel:  parseInt(localStorage.getItem('cc3_maxlvl')    || '1'),
 };
+// Совместимость: если есть старые монеты — конвертируем
+if(!localStorage.getItem('cc3_coinsCents') && localStorage.getItem('cc3_coins')){
+  S.coinsCents = Math.round(parseFloat(localStorage.getItem('cc3_coins')) * 100);
+}
+Object.defineProperty(S, 'coins', {
+  get(){ return S.coinsCents / 100; },
+  set(v){ S.coinsCents = Math.round(v * 100); }
+});
 
 const tgUser = tg?.initDataUnsafe?.user;
-const MY_ID   = tgUser?.id ? String(tgUser.id) : ('local_' + (localStorage.getItem('cc2_localid') || (() => {
+const MY_ID   = tgUser?.id ? String(tgUser.id) : ('local_' + (localStorage.getItem('cc3_localid') || (() => {
   const id = Math.random().toString(36).slice(2,10);
-  localStorage.setItem('cc2_localid', id);
+  localStorage.setItem('cc3_localid', id);
   return id;
 })()));
 const MY_NAME = tgUser
   ? (tgUser.first_name + (tgUser.last_name ? ' ' + tgUser.last_name : ''))
-  : (localStorage.getItem('cc2_name') || 'Игрок');
+  : (localStorage.getItem('cc3_name') || 'Игрок');
 
-if(!localStorage.getItem('cc2_name')) localStorage.setItem('cc2_name', MY_NAME);
+if(!localStorage.getItem('cc3_name')) localStorage.setItem('cc3_name', MY_NAME);
 
 // ── Save ──────────────────────────────────────────────
 let _fbSaveTimer = null;
 const save = () => {
-  localStorage.setItem('cc2_clicks',    S.clicks);
-  localStorage.setItem('cc2_coins',     S.coins.toFixed(1));
-  localStorage.setItem('cc2_withdrawn', S.withdrawn);
-  localStorage.setItem('cc2_history',   JSON.stringify(S.history));
-  localStorage.setItem('cc2_maxlvl',    S.maxLevel);
+  localStorage.setItem('cc3_clicks',    S.clicks);
+  localStorage.setItem('cc3_coinsCents', S.coinsCents);
+  localStorage.setItem('cc3_withdrawn', S.withdrawn);
+  localStorage.setItem('cc3_history',   JSON.stringify(S.history));
+  localStorage.setItem('cc3_maxlvl',    S.maxLevel);
   clearTimeout(_fbSaveTimer);
   _fbSaveTimer = setTimeout(fbSavePlayer, 10000);
 };
@@ -759,7 +782,8 @@ function escHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace
 
 // ── Levels ─────────────────────────────────────────────
 function getLevel(clicks){ return Math.floor(clicks / 1000) + 1; }
-function getMultiplier(level){ return parseFloat((0.05 * level).toFixed(2)); }
+function getMultiplierCents(level){ return 5; } // всегда 5 центов = 0.05 монет
+function getMultiplier(level){ return 0.05; }
 function getNextBonusLevel(level){ return Math.ceil(level / 5) * 5; }
 
 // ── Audio ──────────────────────────────────────────────
@@ -824,7 +848,7 @@ function doClick(cx, cy){
   const currLevel = getLevel(S.clicks);
   const mult = getMultiplier(currLevel);
 
-  S.coins = parseFloat((S.coins + mult).toFixed(1));
+  S.coinsCents += 5; // +0.05 монет = 5 центов, целое число без ошибок
   sndTap();
   if(navigator.vibrate) navigator.vibrate(8);
   if(tg?.HapticFeedback) tg.HapticFeedback.impactOccurred('light');
@@ -859,7 +883,7 @@ function onLevelUp(lvl){
   document.getElementById('lvlupTitle').textContent = `УРОВЕНЬ ${lvl}!`;
   if(lvl % 5 === 0){
     const bonus = lvl * 5;
-    S.coins = parseFloat((S.coins + bonus).toFixed(1));
+    S.coinsCents += bonus * 100;
     save();
     document.getElementById('lvlupSub').textContent    = 'Бонусный уровень! 🌟';
     document.getElementById('lvlupReward').textContent = `+${bonus} монет • тап теперь +${mult.toFixed(2)}`;
@@ -894,7 +918,7 @@ function updateGame(){
   document.getElementById('progressFill').style.width  = (ic/10)+'%';
   document.getElementById('progressLabel').textContent  = `${ic} / 1 000`;
   document.getElementById('levelBadge').textContent     = `⚡ LVL ${lvl}`;
-  document.getElementById('multVal').textContent        = `+${mult.toFixed(2)}`;
+  document.getElementById('multVal').textContent        = '+0.05';
   document.getElementById('nextBonus').textContent      = `LVL ${nb}`;
 }
 
@@ -919,11 +943,11 @@ function updateProfile(){
     :'Максимальный ранг 👑';
 
   // ✅ ИЗМЕНЕНО: минимум 50 монет
-  const ok = S.coins >= 50;
+  const ok = S.coinsCents >= 5000;
   document.getElementById('wdBtn').disabled = !ok;
   document.getElementById('wdNote').textContent = ok
     ?`Доступно: ${S.coins.toFixed(1)} монет ≈ ${Math.floor(S.coins/10)} ₽`
-    :`Нужно ещё ${(50 - S.coins).toFixed(2)} монет для вывода`;
+    :`Нужно ещё ${((5000 - S.coinsCents) / 100).toFixed(2)} монет для вывода`;
 
   const hl=document.getElementById('histList');
   if(!S.history.length){
@@ -943,8 +967,8 @@ document.getElementById('wdBtn').addEventListener('click', async () => {
   let amt = isNaN(inputVal) ? 0 : Math.floor(inputVal);
   if(amt < 50){ showToast('Минимум 50 монет!'); return; }
   if(amt % 50 !== 0){ showToast('Можно вывести только круглые числа: 50, 100, 150...'); return; }
-  if(amt > Math.floor(S.coins)){ showToast('Недостаточно монет!'); return; }
-  S.coins = parseFloat((S.coins - amt).toFixed(1));
+  if(amt > Math.floor(S.coinsCents / 100)){ showToast('Недостаточно монет!'); return; }
+  S.coinsCents -= amt * 100;
   S.withdrawn += amt;
   const d = new Date();
   S.history.push({
