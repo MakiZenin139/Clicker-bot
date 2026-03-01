@@ -237,7 +237,6 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 }
 .top-section-title span{font-size:16px;}
 
-/* Топ карточки */
 .top-list{display:flex;flex-direction:column;gap:8px;}
 
 .top-item{
@@ -256,21 +255,17 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
   content:'';position:absolute;top:0;left:0;right:0;height:1px;
   background:linear-gradient(90deg,transparent,rgba(255,215,0,.15),transparent);
 }
-
-/* 1 место — золото */
 .top-item.rank-1{
   background:linear-gradient(135deg,rgba(40,30,5,.92),rgba(20,16,2,.95));
   border-color:rgba(255,215,0,.35);
   box-shadow:0 0 22px rgba(255,215,0,.1),inset 0 0 30px rgba(255,215,0,.04);
 }
 .top-item.rank-1::before{background:linear-gradient(90deg,transparent,rgba(255,215,0,.45),transparent);}
-/* 2 место — серебро */
 .top-item.rank-2{
   background:linear-gradient(135deg,rgba(25,28,35,.92),rgba(14,16,22,.95));
   border-color:rgba(192,192,192,.28);
   box-shadow:0 0 18px rgba(192,192,192,.07);
 }
-/* 3 место — бронза */
 .top-item.rank-3{
   background:linear-gradient(135deg,rgba(35,20,10,.92),rgba(20,12,4,.95));
   border-color:rgba(205,127,50,.28);
@@ -287,7 +282,6 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 .top-item:nth-child(4){animation-delay:.19s}
 .top-item:nth-child(5){animation-delay:.24s}
 
-/* Медаль / позиция */
 .top-pos{
   width:38px;height:38px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
@@ -315,7 +309,6 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
   color:rgba(255,255,255,.4);
 }
 
-/* Имя и данные */
 .top-info{flex:1;min-width:0;}
 .top-name{
   font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;
@@ -333,10 +326,7 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 }
 .top-meta{font-size:10px;color:rgba(255,255,255,.28);}
 
-/* Значение справа */
-.top-val{
-  text-align:right;flex-shrink:0;
-}
+.top-val{text-align:right;flex-shrink:0;}
 .top-val-num{
   font-family:'Orbitron',sans-serif;font-size:16px;font-weight:900;
   color:var(--gold);
@@ -345,7 +335,6 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 .top-item.rank-1 .top-val-num{font-size:18px;text-shadow:0 0 18px rgba(255,215,0,.6);}
 .top-val-label{font-size:9px;color:rgba(255,255,255,.25);letter-spacing:1px;margin-top:2px;}
 
-/* Загрузка / пустой */
 .top-loading{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   padding:38px 0;gap:14px;
@@ -373,7 +362,6 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
   border-radius:14px;font-size:12px;color:rgba(255,120,120,.6);line-height:1.6;
 }
 
-/* Разделитель секций */
 .section-divider{
   display:flex;align-items:center;gap:10px;margin:20px 0 16px;
 }
@@ -383,7 +371,6 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 }
 .section-divider-icon{font-size:18px;}
 
-/* Моя позиция плашка */
 .my-position{
   background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.15);
   border-radius:13px;padding:12px 15px;margin-top:14px;
@@ -425,7 +412,7 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 
   <div class="progress-wrap">
     <div class="progress-label">
-      <span>До следующих монет</span>
+      <span>До бонуса +50 монет</span>
       <span id="progressLabel">0 / 1000</span>
     </div>
     <div class="progress-bar">
@@ -463,7 +450,6 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
     <div class="top-updated" id="topUpdated"></div>
   </div>
 
-  <!-- ТОП 5 по кликам -->
   <div class="top-section">
     <div class="top-section-title">
       <span>👆</span> Топ по кликам
@@ -484,7 +470,6 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
     <div class="section-divider-icon">✦</div>
   </div>
 
-  <!-- ТОП 5 по монетам -->
   <div class="top-section">
     <div class="top-section-title">
       <span>🪙</span> Топ по монетам
@@ -527,14 +512,17 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
   <div class="bal-card">
     <div class="bal-title">💰 Баланс монет</div>
     <div class="bal-amount" id="balAmt">0</div>
-    <div class="bal-rub">≈ <span id="balRub">0</span> ₽ • минимум 100 монет</div>
+    <!-- ✅ ИЗМЕНЕНО: минимум 50 монет -->
+    <div class="bal-rub">≈ <span id="balRub">0</span> ₽ • минимум 50 монет</div>
   </div>
 
+  <!-- ✅ ИЗМЕНЕНО: min="50" -->
   <div class="wd-row">
-    <input class="wd-input" type="number" id="wdInput" placeholder="Количество монет" min="100">
+    <input class="wd-input" type="number" id="wdInput" placeholder="Количество монет" min="50">
     <button class="wd-btn" id="wdBtn" disabled>ВЫВЕСТИ</button>
   </div>
-  <div class="wd-note" id="wdNote">Нужно 100+ монет для вывода</div>
+  <!-- ✅ ИЗМЕНЕНО: 50+ монет -->
+  <div class="wd-note" id="wdNote">Нужно 50+ монет для вывода</div>
 
   <div class="hist-title">📋 История выводов</div>
   <div id="histList"></div>
@@ -577,15 +565,10 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 
 <script>
 // ══════════════════════════════════════════════════
-// ⚙️  НАСТРОЙКА SUPABASE (работает в России без VPN!)
-//
-// Как получить:
-// 1. Зайди на supabase.com → создай проект
-// 2. Settings → API → скопируй Project URL и anon key
-// 3. Вставь ниже
+// ⚙️  НАСТРОЙКА SUPABASE
 // ══════════════════════════════════════════════════
-const SUPABASE_URL  = 'https://knicearqjyrukjnfpvcq.supabase.co';   // ← 'https://xxxx.supabase.co'
-const SUPABASE_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtuaWNlYXJxanlydWtqbmZwdmNxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIzMjE1MTIsImV4cCI6MjA4Nzg5NzUxMn0.Vcy8i856FKiPqLlQi9pWZ6WdeejVEhqsaInYhBA00XU';   // ← anon public key
+const SUPABASE_URL  = 'https://knicearqjyrukjnfpvcq.supabase.co';
+const SUPABASE_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtuaWNlYXJxanlydWtqbmZwdmNxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIzMjE1MTIsImV4cCI6MjA4Nzg5NzUxMn0.Vcy8i856FKiPqLlQi9pWZ6WdeejVEhqsaInYhBA00XU';
 
 // ── Telegram ───────────────────────────────────────────
 const tg = window.Telegram?.WebApp;
@@ -600,7 +583,6 @@ let S = {
   maxLevel:  parseInt(localStorage.getItem('cc_maxlvl')    || '1'),
 };
 
-// Получаем ID и имя пользователя
 const tgUser = tg?.initDataUnsafe?.user;
 const MY_ID   = tgUser?.id ? String(tgUser.id) : ('local_' + (localStorage.getItem('cc_localid') || (() => {
   const id = Math.random().toString(36).slice(2,10);
@@ -621,12 +603,11 @@ const save = () => {
   localStorage.setItem('cc_withdrawn', S.withdrawn);
   localStorage.setItem('cc_history',   JSON.stringify(S.history));
   localStorage.setItem('cc_maxlvl',    S.maxLevel);
-  // Дебаунс сохранения в Firebase (не чаще раз в 10 сек)
   clearTimeout(_fbSaveTimer);
   _fbSaveTimer = setTimeout(fbSavePlayer, 10000);
 };
 
-// ── Supabase (работает в России без VPN) ─────────────
+// ── Supabase ─────────────────────────────────────────
 const SB_HEADERS = () => ({
   'apikey': SUPABASE_KEY,
   'Authorization': 'Bearer ' + SUPABASE_KEY,
@@ -648,7 +629,7 @@ async function fbSavePlayer(){
         ts:     Date.now()
       })
     });
-  }catch(e){ /* тихо */ }
+  }catch(e){}
 }
 
 async function fbLoadAll(){
@@ -660,7 +641,6 @@ async function fbLoadAll(){
     );
     if(!r.ok) return null;
     const arr = await r.json();
-    // Преобразуем массив в объект как раньше
     const obj = {};
     for(const p of arr){ p.uid = p.id; obj[p.id] = p; }
     return obj;
@@ -675,18 +655,15 @@ async function loadTop(){
   if(_topLoading) return;
   _topLoading = true;
 
-  // Анимация кнопки обновления
   const icon = document.getElementById('refreshIcon');
   icon.classList.add('spin');
   setTimeout(()=>icon.classList.remove('spin'), 620);
 
-  // Показываем спиннеры
   document.getElementById('topClicksList').innerHTML = loadingHtml();
   document.getElementById('topCoinsList').innerHTML  = loadingHtml();
   document.getElementById('myClickPos').style.display = 'none';
   document.getElementById('myCoinPos').style.display  = 'none';
 
-  // Сначала сохраним себя
   await fbSavePlayer();
 
   let players = null;
@@ -695,7 +672,6 @@ async function loadTop(){
   }
 
   if(!SUPABASE_URL || !SUPABASE_KEY){
-    // Нет Supabase — показываем только себя
     players = {};
     players[MY_ID] = { name: MY_NAME, clicks: S.clicks, coins: Math.floor(S.coins), uid: MY_ID };
   }
@@ -710,25 +686,20 @@ async function loadTop(){
 
   const arr = Object.values(players).filter(p => p && p.name);
 
-  // Топ 5 по кликам
   const byClicks = [...arr].sort((a,b)=>b.clicks - a.clicks).slice(0,5);
   renderTopList('topClicksList', byClicks, 'clicks', '👆', MY_ID);
 
-  // Моя позиция по кликам
   const allByClicks = [...arr].sort((a,b)=>b.clicks - a.clicks);
-  const myClickRank = allByClicks.findIndex(p=>p.uid===MY_ID || p.uid===MY_ID);
+  const myClickRank = allByClicks.findIndex(p=>p.uid===MY_ID);
   renderMyPos('myClickPos','myClickRank','myClickVal', myClickRank, S.clicks, byClicks.length);
 
-  // Топ 5 по монетам
   const byCoins = [...arr].sort((a,b)=>b.coins - a.coins).slice(0,5);
   renderTopList('topCoinsList', byCoins, 'coins', '🪙', MY_ID);
 
-  // Моя позиция по монетам
   const allByCoins = [...arr].sort((a,b)=>b.coins - a.coins);
   const myCoinRank = allByCoins.findIndex(p=>p.uid===MY_ID);
   renderMyPos('myCoinPos','myCoinRank','myCoinVal', myCoinRank, Math.floor(S.coins), byCoins.length);
 
-  // Время обновления
   const now = new Date();
   document.getElementById('topUpdated').textContent =
     `Обновлено в ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
@@ -744,7 +715,6 @@ function loadingHtml(){
 function renderMyPos(wrapId, rankId, valId, rank, myVal, topLen){
   const wrap = document.getElementById(wrapId);
   if(rank >= topLen){
-    // Показываем плашку "Твоя позиция" только если не в топ-5
     document.getElementById(rankId).textContent = rank >= 0 ? `#${rank+1}` : '#–';
     document.getElementById(valId).textContent  = myVal.toLocaleString();
     wrap.style.display = 'flex';
@@ -763,7 +733,6 @@ function renderTopList(containerId, players, field, icon, myUid){
     el.innerHTML = `<div class="top-empty"><div class="top-empty-icon">🌌</div><div class="top-empty-text">Пока никого нет в топе.<br>Стань первым!</div></div>`;
     return;
   }
-
   el.innerHTML = '<div class="top-list">' + players.map((p, i) => {
     const isMe = (p.uid === myUid);
     const medalClass = i < 3 ? MEDAL_CLASSES[i] : 'medal-n';
@@ -771,7 +740,6 @@ function renderTopList(containerId, players, field, icon, myUid){
     const medalContent = i < 3 ? MEDALS[i] : (i+1);
     const val = (p[field] || 0).toLocaleString();
     const youBadge = isMe ? `<span class="top-you">ТЫ</span>` : '';
-
     return `
       <div class="top-item ${rankClass}">
         <div class="top-pos ${medalClass}">${medalContent}</div>
@@ -837,7 +805,7 @@ btn.addEventListener('touchend', e => {
   btn.classList.remove('pressed');
   if(!touchActive){ return; }
   touchActive = false;
-  const holdDuration  = Date.now() - GUARD.touchStartTime;
+  const holdDuration   = Date.now() - GUARD.touchStartTime;
   const sinceLastClick = Date.now() - GUARD.lastAcceptedTime;
   if(holdDuration < GUARD.MIN_HOLD) return;
   if(sinceLastClick < GUARD.MIN_INTERVAL) return;
@@ -861,6 +829,7 @@ function doClick(cx, cy){
   if(navigator.vibrate) navigator.vibrate(8);
   if(tg?.HapticFeedback) tg.HapticFeedback.impactOccurred('light');
 
+  // ✅ 1000 кликов = +50 монет
   if(S.clicks % 1000 === 0){
     S.coins = parseFloat((S.coins + 50).toFixed(1));
     sndCoin();
@@ -957,11 +926,12 @@ function updateProfile(){
     ?`До «${nx.n}»: ещё ${(nx.need-S.clicks).toLocaleString()} кликов`
     :'Максимальный ранг 👑';
 
-  const ok = Math.floor(S.coins) >= 100;
+  // ✅ ИЗМЕНЕНО: минимум 50 монет
+  const ok = Math.floor(S.coins) >= 50;
   document.getElementById('wdBtn').disabled = !ok;
   document.getElementById('wdNote').textContent = ok
     ?`Доступно: ${S.coins.toFixed(1)} монет ≈ ${Math.floor(S.coins/10)} ₽`
-    :`Нужно ещё ${(100 - Math.floor(S.coins))} монет`;
+    :`Нужно ещё ${(50 - Math.floor(S.coins))} монет для вывода`;
 
   const hl=document.getElementById('histList');
   if(!S.history.length){
@@ -979,7 +949,8 @@ function updateProfile(){
 document.getElementById('wdBtn').addEventListener('click', () => {
   const inputVal = parseFloat(document.getElementById('wdInput').value);
   let amt = isNaN(inputVal) ? Math.floor(S.coins) : Math.min(Math.floor(inputVal), Math.floor(S.coins));
-  if(amt < 100){ showToast('Минимум 100 монет!'); return; }
+  // ✅ ИЗМЕНЕНО: минимум 50
+  if(amt < 50){ showToast('Минимум 50 монет!'); return; }
   S.coins = parseFloat((S.coins - amt).toFixed(1));
   S.withdrawn += amt;
   const d = new Date();
@@ -1030,7 +1001,6 @@ function resetAll(){
 // Init
 updateGame();
 updateProfile();
-// Сохраним себя в Supabase при старте (через 3 сек, чтоб не блокировать)
 setTimeout(fbSavePlayer, 3000);
 </script>
 </body>
