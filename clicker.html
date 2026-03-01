@@ -591,15 +591,15 @@ if(tg){ tg.ready(); tg.expand(); tg.setHeaderColor('#05030f'); tg.setBackgroundC
 
 // ── State ──────────────────────────────────────────────
 let S = {
-  clicks:    parseInt(localStorage.getItem('cc3_clicks')    || '0'),
-  coinsCents: parseInt(localStorage.getItem('cc3_coinsCents') || '0'), // монеты * 100
-  withdrawn: parseInt(localStorage.getItem('cc3_withdrawn') || '0'),
-  history:   JSON.parse(localStorage.getItem('cc3_history') || '[]'),
-  maxLevel:  parseInt(localStorage.getItem('cc3_maxlvl')    || '1'),
+  clicks:    parseInt(localStorage.getItem('fg2026_clicks')    || '0'),
+  coinsCents: parseInt(localStorage.getItem('fg2026_coinsCents') || '0'), // монеты * 100
+  withdrawn: parseInt(localStorage.getItem('fg2026_withdrawn') || '0'),
+  history:   JSON.parse(localStorage.getItem('fg2026_history') || '[]'),
+  maxLevel:  parseInt(localStorage.getItem('fg2026_maxlvl')    || '1'),
 };
 // Совместимость: если есть старые монеты — конвертируем
-if(!localStorage.getItem('cc3_coinsCents') && localStorage.getItem('cc3_coins')){
-  S.coinsCents = Math.round(parseFloat(localStorage.getItem('cc3_coins')) * 100);
+if(!localStorage.getItem('fg2026_coinsCents') && localStorage.getItem('fg2026_coins')){
+  S.coinsCents = Math.round(parseFloat(localStorage.getItem('fg2026_coins')) * 100);
 }
 Object.defineProperty(S, 'coins', {
   get(){ return S.coinsCents / 100; },
@@ -607,25 +607,25 @@ Object.defineProperty(S, 'coins', {
 });
 
 const tgUser = tg?.initDataUnsafe?.user;
-const MY_ID   = tgUser?.id ? String(tgUser.id) : ('local_' + (localStorage.getItem('cc3_localid') || (() => {
+const MY_ID   = tgUser?.id ? String(tgUser.id) : ('local_' + (localStorage.getItem('fg2026_localid') || (() => {
   const id = Math.random().toString(36).slice(2,10);
-  localStorage.setItem('cc3_localid', id);
+  localStorage.setItem('fg2026_localid', id);
   return id;
 })()));
 const MY_NAME = tgUser
   ? (tgUser.first_name + (tgUser.last_name ? ' ' + tgUser.last_name : ''))
-  : (localStorage.getItem('cc3_name') || 'Игрок');
+  : (localStorage.getItem('fg2026_name') || 'Игрок');
 
-if(!localStorage.getItem('cc3_name')) localStorage.setItem('cc3_name', MY_NAME);
+if(!localStorage.getItem('fg2026_name')) localStorage.setItem('fg2026_name', MY_NAME);
 
 // ── Save ──────────────────────────────────────────────
 let _fbSaveTimer = null;
 const save = () => {
-  localStorage.setItem('cc3_clicks',    S.clicks);
-  localStorage.setItem('cc3_coinsCents', S.coinsCents);
-  localStorage.setItem('cc3_withdrawn', S.withdrawn);
-  localStorage.setItem('cc3_history',   JSON.stringify(S.history));
-  localStorage.setItem('cc3_maxlvl',    S.maxLevel);
+  localStorage.setItem('fg2026_clicks',    S.clicks);
+  localStorage.setItem('fg2026_coinsCents', S.coinsCents);
+  localStorage.setItem('fg2026_withdrawn', S.withdrawn);
+  localStorage.setItem('fg2026_history',   JSON.stringify(S.history));
+  localStorage.setItem('fg2026_maxlvl',    S.maxLevel);
   clearTimeout(_fbSaveTimer);
   _fbSaveTimer = setTimeout(fbSavePlayer, 10000);
 };
