@@ -24,7 +24,6 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
     #05030f;
   overflow:hidden;
 }
-/* Звёзды */
 .galaxy::before,.galaxy::after{
   content:'';position:absolute;inset:0;
   background-image:
@@ -60,7 +59,6 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
   animation: twinkle 4s ease-in-out infinite alternate;
 }
 @keyframes twinkle{0%{opacity:.6}100%{opacity:1}}
-/* Туманность */
 .nebula{
   position:absolute;width:320px;height:220px;
   background:radial-gradient(ellipse,rgba(120,60,200,.18) 0%,transparent 70%);
@@ -89,7 +87,7 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 
 /* ════ HEADER ════ */
 .header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
-.logo{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px;text-shadow:none;}
+.logo{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px;}
 .level-badge{background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.35);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--gold);font-weight:600;backdrop-filter:blur(8px);}
 
 /* ════ STATS ════ */
@@ -117,11 +115,7 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
   width:195px;height:195px;border-radius:50%;
   background:radial-gradient(circle at 38% 35%,rgba(60,50,10,.9),rgba(5,5,2,.95));
   border:3px solid rgba(255,215,0,.5);
-  box-shadow:
-    0 0 40px rgba(255,215,0,.18),
-    0 0 80px rgba(255,215,0,.08),
-    0 0 120px rgba(150,100,255,.06),
-    inset 0 0 35px rgba(0,0,0,.6);
+  box-shadow:0 0 40px rgba(255,215,0,.18),0 0 80px rgba(255,215,0,.08),0 0 120px rgba(150,100,255,.06),inset 0 0 35px rgba(0,0,0,.6);
   display:flex;align-items:center;justify-content:center;flex-direction:column;
   cursor:pointer;user-select:none;-webkit-user-select:none;
   transition:transform .06s,box-shadow .06s;
@@ -145,11 +139,7 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 @keyframes pa{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.46);opacity:0}}
 
 /* ════ LEVEL UP POPUP ════ */
-.lvlup{
-  position:fixed;inset:0;z-index:500;display:none;
-  align-items:center;justify-content:center;
-  background:rgba(0,0,0,.7);backdrop-filter:blur(6px);
-}
+.lvlup{position:fixed;inset:0;z-index:500;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);}
 .lvlup.show{display:flex;}
 .lvlup-card{
   background:linear-gradient(135deg,rgba(20,15,40,.97),rgba(10,8,25,.97));
@@ -164,20 +154,14 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 .lvlup-title{font-family:'Orbitron',sans-serif;font-size:22px;font-weight:900;color:var(--gold);margin-bottom:6px;}
 .lvlup-sub{font-size:14px;color:rgba(255,255,255,.55);margin-bottom:18px;line-height:1.5;}
 .lvlup-reward{font-family:'Orbitron',sans-serif;font-size:18px;color:var(--green);margin-bottom:20px;font-weight:700;}
-.lvlup-btn{
-  padding:13px 32px;border-radius:14px;border:none;
-  background:linear-gradient(135deg,#a07808,var(--gold));
-  color:#000;font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;
-  cursor:pointer;transition:transform .1s;
-}
+.lvlup-btn{padding:13px 32px;border-radius:14px;border:none;background:linear-gradient(135deg,#a07808,var(--gold));color:#000;font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:transform .1s;}
 .lvlup-btn:active{transform:scale(.95);}
 
 /* ════ TOAST ════ */
 .toast{
   position:fixed;bottom:72px;left:50%;
   transform:translateX(-50%) translateY(55px);
-  background:rgba(10,8,25,.96);
-  border:1px solid rgba(255,215,0,.32);
+  background:rgba(10,8,25,.96);border:1px solid rgba(255,215,0,.32);
   backdrop-filter:blur(14px);color:var(--gold);
   padding:11px 22px;border-radius:28px;font-size:13px;font-weight:600;
   z-index:1000;transition:transform .26s;white-space:nowrap;pointer-events:none;
@@ -190,23 +174,19 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 .avatar img{width:100%;height:100%;object-fit:cover;}
 .p-name{font-family:'Orbitron',sans-serif;font-size:17px;font-weight:700;color:#fff;margin-bottom:3px;}
 .p-sub{font-size:12px;color:rgba(255,255,255,.28);}
-
 .rank-row{background:var(--card);border:1px solid rgba(255,215,0,.12);border-radius:15px;padding:15px 17px;margin-bottom:13px;display:flex;align-items:center;gap:13px;backdrop-filter:blur(10px);}
 .rank-icon{font-size:30px;}
 .rank-name{font-family:'Orbitron',sans-serif;font-size:13px;color:var(--gold);margin-bottom:3px;}
 .rank-next{font-size:11px;color:rgba(255,255,255,.28);}
-
 .pstats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-bottom:14px;}
 .ps{background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:13px;padding:13px 8px;text-align:center;backdrop-filter:blur(10px);}
 .ps-v{font-family:'Orbitron',sans-serif;font-size:15px;font-weight:700;color:var(--gold);margin-bottom:3px;}
 .ps-l{font-size:9px;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:.8px;}
-
 .bal-card{background:var(--card);border:1px solid rgba(255,215,0,.18);border-radius:17px;padding:20px 18px;margin-bottom:13px;position:relative;overflow:hidden;backdrop-filter:blur(10px);}
 .bal-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,215,0,.4),transparent);}
 .bal-title{font-size:10px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:7px;}
 .bal-amount{font-family:'Orbitron',sans-serif;font-size:34px;font-weight:900;color:var(--gold);margin-bottom:3px;}
 .bal-rub{font-size:12px;color:rgba(255,255,255,.3);}
-
 .wd-row{display:flex;gap:9px;margin-bottom:7px;}
 .wd-input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,215,0,.18);border-radius:12px;padding:13px 15px;color:#fff;font-family:'Exo 2',sans-serif;font-size:15px;outline:none;}
 .wd-input:focus{border-color:rgba(255,215,0,.45);}
@@ -214,13 +194,205 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 .wd-btn:disabled{opacity:.3;cursor:not-allowed;}
 .wd-btn:not(:disabled):active{transform:scale(.95);}
 .wd-note{font-size:11px;color:rgba(255,255,255,.25);text-align:center;margin-bottom:20px;}
-
 .hist-title{font-family:'Orbitron',sans-serif;font-size:11px;color:rgba(255,255,255,.35);letter-spacing:2px;text-transform:uppercase;margin-bottom:11px;}
 .hist-empty{text-align:center;padding:18px;color:rgba(255,255,255,.18);font-size:13px;}
 .hist-item{background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:13px 15px;margin-bottom:7px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(10px);}
 .hi-label{font-size:13px;color:rgba(255,255,255,.65);margin-bottom:2px;}
 .hi-date{font-size:10px;color:rgba(255,255,255,.22);}
 .hi-amt{font-family:'Orbitron',sans-serif;font-size:13px;color:var(--green);font-weight:700;}
+
+/* ════ TOP PAGE ════ */
+.top-header{text-align:center;margin-bottom:22px;padding-top:4px;}
+.top-title{
+  font-family:'Orbitron',sans-serif;font-size:22px;font-weight:900;
+  background:linear-gradient(135deg,#fff 0%,var(--gold) 50%,var(--gold2) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:3px;margin-bottom:4px;
+}
+.top-subtitle{font-size:11px;color:rgba(255,255,255,.28);letter-spacing:2px;text-transform:uppercase;}
+
+.top-refresh{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  margin-bottom:18px;
+}
+.refresh-btn{
+  background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);
+  border-radius:20px;padding:7px 18px;color:var(--gold);font-size:11px;
+  font-family:'Exo 2',sans-serif;font-weight:600;cursor:pointer;
+  letter-spacing:1px;transition:all .2s;display:flex;align-items:center;gap:6px;
+}
+.refresh-btn:active{transform:scale(.95);background:rgba(255,215,0,.15);}
+.refresh-icon{display:inline-block;transition:transform .6s;}
+.refresh-icon.spin{animation:spin360 .6s linear;}
+@keyframes spin360{to{transform:rotate(360deg)}}
+.top-updated{font-size:10px;color:rgba(255,255,255,.2);}
+
+.top-section{margin-bottom:20px;}
+.top-section-title{
+  display:flex;align-items:center;gap:8px;
+  font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;
+  color:rgba(255,255,255,.4);letter-spacing:2.5px;text-transform:uppercase;
+  margin-bottom:12px;padding-bottom:8px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.top-section-title span{font-size:16px;}
+
+/* Топ карточки */
+.top-list{display:flex;flex-direction:column;gap:8px;}
+
+.top-item{
+  position:relative;overflow:hidden;
+  background:var(--card);
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.06);
+  padding:13px 15px;
+  display:flex;align-items:center;gap:13px;
+  backdrop-filter:blur(10px);
+  transition:transform .15s,border-color .15s;
+  animation:slideIn .3s ease both;
+}
+.top-item:active{transform:scale(.98);}
+.top-item::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,215,0,.15),transparent);
+}
+
+/* 1 место — золото */
+.top-item.rank-1{
+  background:linear-gradient(135deg,rgba(40,30,5,.92),rgba(20,16,2,.95));
+  border-color:rgba(255,215,0,.35);
+  box-shadow:0 0 22px rgba(255,215,0,.1),inset 0 0 30px rgba(255,215,0,.04);
+}
+.top-item.rank-1::before{background:linear-gradient(90deg,transparent,rgba(255,215,0,.45),transparent);}
+/* 2 место — серебро */
+.top-item.rank-2{
+  background:linear-gradient(135deg,rgba(25,28,35,.92),rgba(14,16,22,.95));
+  border-color:rgba(192,192,192,.28);
+  box-shadow:0 0 18px rgba(192,192,192,.07);
+}
+/* 3 место — бронза */
+.top-item.rank-3{
+  background:linear-gradient(135deg,rgba(35,20,10,.92),rgba(20,12,4,.95));
+  border-color:rgba(205,127,50,.28);
+  box-shadow:0 0 18px rgba(205,127,50,.07);
+}
+
+@keyframes slideIn{
+  from{opacity:0;transform:translateX(-18px)}
+  to{opacity:1;transform:translateX(0)}
+}
+.top-item:nth-child(1){animation-delay:.04s}
+.top-item:nth-child(2){animation-delay:.09s}
+.top-item:nth-child(3){animation-delay:.14s}
+.top-item:nth-child(4){animation-delay:.19s}
+.top-item:nth-child(5){animation-delay:.24s}
+
+/* Медаль / позиция */
+.top-pos{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Orbitron',sans-serif;font-size:13px;font-weight:900;
+  flex-shrink:0;position:relative;
+}
+.top-pos.medal-1{
+  background:radial-gradient(circle at 35% 30%,#fff8d6,#d4a017);
+  color:#5a3a00;font-size:20px;
+  box-shadow:0 0 16px rgba(255,215,0,.5);
+}
+.top-pos.medal-2{
+  background:radial-gradient(circle at 35% 30%,#f0f0f0,#9e9e9e);
+  color:#3a3a3a;font-size:20px;
+  box-shadow:0 0 12px rgba(192,192,192,.3);
+}
+.top-pos.medal-3{
+  background:radial-gradient(circle at 35% 30%,#ffd4a0,#b87333);
+  color:#4a2000;font-size:20px;
+  box-shadow:0 0 12px rgba(205,127,50,.3);
+}
+.top-pos.medal-n{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  color:rgba(255,255,255,.4);
+}
+
+/* Имя и данные */
+.top-info{flex:1;min-width:0;}
+.top-name{
+  font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;
+  color:#fff;margin-bottom:3px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.top-item.rank-1 .top-name{color:var(--gold);}
+.top-item.rank-2 .top-name{color:#d0d0d0;}
+.top-item.rank-3 .top-name{color:#cd7f32;}
+.top-you{
+  display:inline-block;font-size:9px;
+  background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.3);
+  color:var(--gold);border-radius:8px;padding:1px 6px;
+  margin-left:6px;vertical-align:middle;letter-spacing:1px;
+}
+.top-meta{font-size:10px;color:rgba(255,255,255,.28);}
+
+/* Значение справа */
+.top-val{
+  text-align:right;flex-shrink:0;
+}
+.top-val-num{
+  font-family:'Orbitron',sans-serif;font-size:16px;font-weight:900;
+  color:var(--gold);
+  text-shadow:0 0 12px rgba(255,215,0,.4);
+}
+.top-item.rank-1 .top-val-num{font-size:18px;text-shadow:0 0 18px rgba(255,215,0,.6);}
+.top-val-label{font-size:9px;color:rgba(255,255,255,.25);letter-spacing:1px;margin-top:2px;}
+
+/* Загрузка / пустой */
+.top-loading{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:38px 0;gap:14px;
+}
+.top-spinner{
+  width:36px;height:36px;border-radius:50%;
+  border:3px solid rgba(255,215,0,.1);
+  border-top-color:var(--gold);
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.top-loading-text{font-size:12px;color:rgba(255,255,255,.25);letter-spacing:1.5px;}
+
+.top-empty{
+  text-align:center;padding:28px 16px;
+  background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.08);
+  border-radius:14px;
+}
+.top-empty-icon{font-size:32px;margin-bottom:8px;}
+.top-empty-text{font-size:12px;color:rgba(255,255,255,.25);line-height:1.6;}
+
+.top-error{
+  text-align:center;padding:22px 16px;
+  background:rgba(255,60,60,.04);border:1px solid rgba(255,60,60,.12);
+  border-radius:14px;font-size:12px;color:rgba(255,120,120,.6);line-height:1.6;
+}
+
+/* Разделитель секций */
+.section-divider{
+  display:flex;align-items:center;gap:10px;margin:20px 0 16px;
+}
+.section-divider::before,.section-divider::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,215,0,.15),transparent);
+}
+.section-divider-icon{font-size:18px;}
+
+/* Моя позиция плашка */
+.my-position{
+  background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.15);
+  border-radius:13px;padding:12px 15px;margin-top:14px;
+  display:flex;align-items:center;justify-content:space-between;
+  backdrop-filter:blur(8px);
+}
+.my-pos-left{font-size:11px;color:rgba(255,255,255,.4);}
+.my-pos-rank{font-family:'Orbitron',sans-serif;font-size:13px;color:var(--gold);font-weight:700;}
+.my-pos-val{font-family:'Orbitron',sans-serif;font-size:14px;color:var(--gold);font-weight:700;}
 </style>
 </head>
 <body>
@@ -263,7 +435,7 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 
   <div class="mult-row">
     <div class="mult-info">💎 Монет за тап</div>
-    <div class="mult-val" id="multVal">+0.1</div>
+    <div class="mult-val" id="multVal">+1.0</div>
     <div class="mult-info">🏆 Следующий бонус</div>
     <div class="mult-val" id="nextBonus">LVL 5</div>
   </div>
@@ -273,6 +445,60 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
       <div class="coin-emoji">🪙</div>
       <div class="tap-hint">tap to earn</div>
     </button>
+  </div>
+</div>
+
+<!-- ═══ TOP ═══ -->
+<div class="page" id="page-top">
+  <div class="top-header">
+    <div class="top-title">ЛИДЕРЫ</div>
+    <div class="top-subtitle">Топ игроков ClickCoin</div>
+  </div>
+
+  <div class="top-refresh">
+    <button class="refresh-btn" onclick="loadTop()">
+      <span class="refresh-icon" id="refreshIcon">↻</span>
+      Обновить
+    </button>
+    <div class="top-updated" id="topUpdated"></div>
+  </div>
+
+  <!-- ТОП 5 по кликам -->
+  <div class="top-section">
+    <div class="top-section-title">
+      <span>👆</span> Топ по кликам
+    </div>
+    <div id="topClicksList">
+      <div class="top-loading">
+        <div class="top-spinner"></div>
+        <div class="top-loading-text">ЗАГРУЗКА...</div>
+      </div>
+    </div>
+    <div id="myClickPos" style="display:none" class="my-position">
+      <div class="my-pos-left">Твоя позиция<br><span class="my-pos-rank" id="myClickRank">#–</span></div>
+      <div class="my-pos-val"><span id="myClickVal">0</span> 👆</div>
+    </div>
+  </div>
+
+  <div class="section-divider">
+    <div class="section-divider-icon">✦</div>
+  </div>
+
+  <!-- ТОП 5 по монетам -->
+  <div class="top-section">
+    <div class="top-section-title">
+      <span>🪙</span> Топ по монетам
+    </div>
+    <div id="topCoinsList">
+      <div class="top-loading">
+        <div class="top-spinner"></div>
+        <div class="top-loading-text">ЗАГРУЗКА...</div>
+      </div>
+    </div>
+    <div id="myCoinPos" style="display:none" class="my-position">
+      <div class="my-pos-left">Твоя позиция<br><span class="my-pos-rank" id="myCoinRank">#–</span></div>
+      <div class="my-pos-val"><span id="myCoinVal">0</span> 🪙</div>
+    </div>
   </div>
 </div>
 
@@ -312,7 +538,9 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 
   <div class="hist-title">📋 История выводов</div>
   <div id="histList"></div>
-  <div style="text-align:center;margin-top:24px;"><button onclick="resetAll()" style="background:rgba(255,60,60,.1);border:1px solid rgba(255,60,60,.3);color:rgba(255,100,100,.8);border-radius:12px;padding:11px 28px;font-family:Exo 2,sans-serif;font-size:13px;cursor:pointer;">🗑 Сбросить прогресс</button></div>
+  <div style="text-align:center;margin-top:24px;">
+    <button onclick="resetAll()" style="background:rgba(255,60,60,.1);border:1px solid rgba(255,60,60,.3);color:rgba(255,100,100,.8);border-radius:12px;padding:11px 28px;font-family:'Exo 2',sans-serif;font-size:13px;cursor:pointer;">🗑 Сбросить прогресс</button>
+  </div>
 </div>
 
 <!-- TABS -->
@@ -320,6 +548,11 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
   <div class="tab active" id="tab-game" onclick="switchTab('game')">
     <div class="tab-icon">🪙</div>
     <div class="tab-label">Игра</div>
+    <div class="tab-line"></div>
+  </div>
+  <div class="tab" id="tab-top" onclick="switchTab('top')">
+    <div class="tab-icon">🏆</div>
+    <div class="tab-label">Топ</div>
     <div class="tab-line"></div>
   </div>
   <div class="tab" id="tab-profile" onclick="switchTab('profile')">
@@ -343,6 +576,20 @@ html,body{height:100%;font-family:'Exo 2',sans-serif;color:#fff;overflow:hidden;
 <div class="toast" id="toast"></div>
 
 <script>
+// ══════════════════════════════════════════════════
+// ⚙️  НАСТРОЙКА FIREBASE — вставь свой URL ниже!
+//
+// Как получить:
+// 1. Зайди на console.firebase.google.com
+// 2. Создай проект → Realtime Database → Создать БД
+// 3. Выбери режим "Тест" (публичный, 30 дней)
+// 4. Скопируй URL вида: https://ТВОЙ-ПРОЕКТ-default-rtdb.firebaseio.com
+// 5. Вставь его ниже БЕЗ слэша в конце
+//
+// Пока URL не задан — лидерборд работает в локальном режиме
+// ══════════════════════════════════════════════════
+const FIREBASE_URL = 'https://clickcoin-1067d-default-rtdb.firebaseio.com';  // ← ВСТАВЬ СЮДА: 'https://твой-проект-default-rtdb.firebaseio.com'
+
 // ── Telegram ───────────────────────────────────────────
 const tg = window.Telegram?.WebApp;
 if(tg){ tg.ready(); tg.expand(); tg.setHeaderColor('#05030f'); tg.setBackgroundColor('#05030f'); }
@@ -355,31 +602,186 @@ let S = {
   history:   JSON.parse(localStorage.getItem('cc_history') || '[]'),
   maxLevel:  parseInt(localStorage.getItem('cc_maxlvl')    || '1'),
 };
+
+// Получаем ID и имя пользователя
+const tgUser = tg?.initDataUnsafe?.user;
+const MY_ID   = tgUser?.id ? String(tgUser.id) : ('local_' + (localStorage.getItem('cc_localid') || (() => {
+  const id = Math.random().toString(36).slice(2,10);
+  localStorage.setItem('cc_localid', id);
+  return id;
+})()));
+const MY_NAME = tgUser
+  ? (tgUser.first_name + (tgUser.last_name ? ' ' + tgUser.last_name : ''))
+  : (localStorage.getItem('cc_name') || 'Игрок');
+
+if(!localStorage.getItem('cc_name')) localStorage.setItem('cc_name', MY_NAME);
+
+// ── Save ──────────────────────────────────────────────
+let _fbSaveTimer = null;
 const save = () => {
   localStorage.setItem('cc_clicks',    S.clicks);
   localStorage.setItem('cc_coins',     S.coins.toFixed(1));
   localStorage.setItem('cc_withdrawn', S.withdrawn);
   localStorage.setItem('cc_history',   JSON.stringify(S.history));
   localStorage.setItem('cc_maxlvl',    S.maxLevel);
+  // Дебаунс сохранения в Firebase (не чаще раз в 10 сек)
+  clearTimeout(_fbSaveTimer);
+  _fbSaveTimer = setTimeout(fbSavePlayer, 10000);
 };
 
-// ── Levels ─────────────────────────────────────────────
-// Уровень = каждые 500 кликов
-// Каждые 5 уровней: +0.1 к множителю и бонус монетами
-function getLevel(clicks){ return Math.floor(clicks / 500) + 1; }
-function getMultiplier(level){
-  // База 1.0 на LVL 1, каждый уровень +0.1
-  return parseFloat((1.0 + (level - 1) * 0.1).toFixed(1));
-}
-function getLevelUpRewardClicks(lvl){
-  // Уровни кратные 5 дают бонус
-  return lvl % 5 === 0 ? lvl * 5 : 0; // монет бонус
+// ── Firebase ──────────────────────────────────────────
+async function fbSavePlayer(){
+  if(!FIREBASE_URL) return;
+  try{
+    await fetch(`${FIREBASE_URL}/players/${MY_ID}.json`, {
+      method: 'PUT',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        name:   MY_NAME,
+        clicks: S.clicks,
+        coins:  Math.floor(S.coins),
+        uid:    MY_ID,
+        ts:     Date.now()
+      })
+    });
+  }catch(e){ /* тихо, не критично */ }
 }
 
-// Следующий бонусный уровень
-function getNextBonusLevel(level){
-  return Math.ceil(level / 5) * 5;
+async function fbLoadAll(){
+  if(!FIREBASE_URL) return null;
+  try{
+    const r = await fetch(`${FIREBASE_URL}/players.json`);
+    if(!r.ok) return null;
+    return await r.json();
+  }catch(e){ return null; }
 }
+
+// ── Top Tab ───────────────────────────────────────────
+let _topLoaded = false;
+let _topLoading = false;
+
+async function loadTop(){
+  if(_topLoading) return;
+  _topLoading = true;
+
+  // Анимация кнопки обновления
+  const icon = document.getElementById('refreshIcon');
+  icon.classList.add('spin');
+  setTimeout(()=>icon.classList.remove('spin'), 620);
+
+  // Показываем спиннеры
+  document.getElementById('topClicksList').innerHTML = loadingHtml();
+  document.getElementById('topCoinsList').innerHTML  = loadingHtml();
+  document.getElementById('myClickPos').style.display = 'none';
+  document.getElementById('myCoinPos').style.display  = 'none';
+
+  // Сначала сохраним себя
+  await fbSavePlayer();
+
+  let players = null;
+  if(FIREBASE_URL){
+    players = await fbLoadAll();
+  }
+
+  if(!FIREBASE_URL){
+    // Нет Firebase — показываем только себя
+    players = {};
+    players[MY_ID] = { name: MY_NAME, clicks: S.clicks, coins: Math.floor(S.coins), uid: MY_ID };
+  }
+
+  if(!players){
+    const err = `<div class="top-error">⚠️ Не удалось загрузить лидерборд.<br>Проверь подключение к интернету.</div>`;
+    document.getElementById('topClicksList').innerHTML = err;
+    document.getElementById('topCoinsList').innerHTML  = err;
+    _topLoading = false;
+    return;
+  }
+
+  const arr = Object.values(players).filter(p => p && p.name);
+
+  // Топ 5 по кликам
+  const byClicks = [...arr].sort((a,b)=>b.clicks - a.clicks).slice(0,5);
+  renderTopList('topClicksList', byClicks, 'clicks', '👆', MY_ID);
+
+  // Моя позиция по кликам
+  const allByClicks = [...arr].sort((a,b)=>b.clicks - a.clicks);
+  const myClickRank = allByClicks.findIndex(p=>p.uid===MY_ID || p.uid===MY_ID);
+  renderMyPos('myClickPos','myClickRank','myClickVal', myClickRank, S.clicks, byClicks.length);
+
+  // Топ 5 по монетам
+  const byCoins = [...arr].sort((a,b)=>b.coins - a.coins).slice(0,5);
+  renderTopList('topCoinsList', byCoins, 'coins', '🪙', MY_ID);
+
+  // Моя позиция по монетам
+  const allByCoins = [...arr].sort((a,b)=>b.coins - a.coins);
+  const myCoinRank = allByCoins.findIndex(p=>p.uid===MY_ID);
+  renderMyPos('myCoinPos','myCoinRank','myCoinVal', myCoinRank, Math.floor(S.coins), byCoins.length);
+
+  // Время обновления
+  const now = new Date();
+  document.getElementById('topUpdated').textContent =
+    `Обновлено в ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
+
+  _topLoaded = true;
+  _topLoading = false;
+}
+
+function loadingHtml(){
+  return `<div class="top-loading"><div class="top-spinner"></div><div class="top-loading-text">ЗАГРУЗКА...</div></div>`;
+}
+
+function renderMyPos(wrapId, rankId, valId, rank, myVal, topLen){
+  const wrap = document.getElementById(wrapId);
+  if(rank >= topLen){
+    // Показываем плашку "Твоя позиция" только если не в топ-5
+    document.getElementById(rankId).textContent = rank >= 0 ? `#${rank+1}` : '#–';
+    document.getElementById(valId).textContent  = myVal.toLocaleString();
+    wrap.style.display = 'flex';
+  } else {
+    wrap.style.display = 'none';
+  }
+}
+
+const MEDALS = ['🥇','🥈','🥉'];
+const MEDAL_CLASSES = ['medal-1','medal-2','medal-3'];
+const RANK_CLASSES  = ['rank-1','rank-2','rank-3'];
+
+function renderTopList(containerId, players, field, icon, myUid){
+  const el = document.getElementById(containerId);
+  if(!players.length){
+    el.innerHTML = `<div class="top-empty"><div class="top-empty-icon">🌌</div><div class="top-empty-text">Пока никого нет в топе.<br>Стань первым!</div></div>`;
+    return;
+  }
+
+  el.innerHTML = '<div class="top-list">' + players.map((p, i) => {
+    const isMe = (p.uid === myUid);
+    const medalClass = i < 3 ? MEDAL_CLASSES[i] : 'medal-n';
+    const rankClass  = i < 3 ? RANK_CLASSES[i]  : '';
+    const medalContent = i < 3 ? MEDALS[i] : (i+1);
+    const val = (p[field] || 0).toLocaleString();
+    const youBadge = isMe ? `<span class="top-you">ТЫ</span>` : '';
+
+    return `
+      <div class="top-item ${rankClass}">
+        <div class="top-pos ${medalClass}">${medalContent}</div>
+        <div class="top-info">
+          <div class="top-name">${escHtml(p.name || 'Игрок')}${youBadge}</div>
+          <div class="top-meta">${field==='clicks' ? 'Кликов всего' : 'Монет заработано'}</div>
+        </div>
+        <div class="top-val">
+          <div class="top-val-num">${val}</div>
+          <div class="top-val-label">${icon}</div>
+        </div>
+      </div>`;
+  }).join('') + '</div>';
+}
+
+function escHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// ── Levels ─────────────────────────────────────────────
+function getLevel(clicks){ return Math.floor(clicks / 500) + 1; }
+function getMultiplier(level){ return parseFloat((1.0 + (level - 1) * 0.1).toFixed(1)); }
+function getNextBonusLevel(level){ return Math.ceil(level / 5) * 5; }
 
 // ── Audio ──────────────────────────────────────────────
 let AC;
@@ -395,39 +797,19 @@ function tone(f1,f2,dur,vol,type='sine'){
     o.start(); o.stop(c.currentTime+dur);
   }catch(e){}
 }
-// Более громкий, приятный звук тапа
-const sndTap = () => {
-  tone(880, 520, .055, .45);
-  tone(1200, 700, .04, .2);
-};
-const sndCoin = () => [523,659,784,1047].forEach((f,i)=>setTimeout(()=>tone(f,0,.2,.35),i*90));
-const sndLevelUp = () => {
-  [523,659,784,880,1047,1320].forEach((f,i)=>setTimeout(()=>tone(f,0,.18,.3),i*80));
-};
+const sndTap     = () => { tone(880,520,.055,.45); tone(1200,700,.04,.2); };
+const sndCoin    = () => [523,659,784,1047].forEach((f,i)=>setTimeout(()=>tone(f,0,.2,.35),i*90));
+const sndLevelUp = () => [523,659,784,880,1047,1320].forEach((f,i)=>setTimeout(()=>tone(f,0,.18,.3),i*80));
 
-// ══════════════════════════════════════════════════════
-//  ЗАЩИТА ОТ АВТОКЛИКЕРА
-//  Метод: проверка длительности касания (touchstart → touchend)
-//
-//  Автокликер (см. скрин): hold = 10 мс
-//  Человеческий палец:     hold = 60–300 мс
-//
-//  Если hold < MIN_HOLD → клик НЕ засчитывается (тихо)
-//  Дополнительно: если интервал между принятыми кликами
-//  < MIN_INTERVAL — тоже не засчитываем
-// ══════════════════════════════════════════════════════
+// ── Антиавтокликер ─────────────────────────────────────
 const GUARD = {
-  MIN_HOLD:     50,   // мс — минимальная длительность нажатия пальцем
-  MIN_INTERVAL: 80,   // мс — минимальный интервал между принятыми кликами
-  touchStartTime: 0,
-  lastAcceptedTime: 0,
-  isTouch: false,
+  MIN_HOLD: 50, MIN_INTERVAL: 80,
+  touchStartTime: 0, lastAcceptedTime: 0, isTouch: false,
 };
 window.addEventListener('touchstart', ()=>{ GUARD.isTouch=true; },{once:true,passive:true});
 
 const btn = document.getElementById('clickBtn');
-let touchActive = false;
-let pendingX = 0, pendingY = 0;
+let touchActive = false, pendingX = 0, pendingY = 0;
 
 btn.addEventListener('touchstart', e => {
   e.preventDefault();
@@ -444,34 +826,17 @@ btn.addEventListener('touchend', e => {
   btn.classList.remove('pressed');
   if(!touchActive){ return; }
   touchActive = false;
-
-  const holdDuration = Date.now() - GUARD.touchStartTime;
+  const holdDuration  = Date.now() - GUARD.touchStartTime;
   const sinceLastClick = Date.now() - GUARD.lastAcceptedTime;
-
-  // Тихо игнорируем если:
-  // 1. Удержание слишком короткое (автокликер держит 10мс)
-  // 2. Слишком короткий интервал между кликами
   if(holdDuration < GUARD.MIN_HOLD) return;
   if(sinceLastClick < GUARD.MIN_INTERVAL) return;
-
   GUARD.lastAcceptedTime = Date.now();
   doClick(pendingX, pendingY);
 }, {passive: false});
 
-btn.addEventListener('touchcancel', () => {
-  touchActive = false;
-  btn.classList.remove('pressed');
-}, {passive: true});
-
-// Мышь (десктоп)
-btn.addEventListener('mousedown', e => {
-  if(GUARD.isTouch) return;
-  btn.classList.add('pressed');
-  doClick(e.clientX, e.clientY);
-});
-btn.addEventListener('mouseup', () => {
-  if(!GUARD.isTouch) btn.classList.remove('pressed');
-});
+btn.addEventListener('touchcancel', () => { touchActive=false; btn.classList.remove('pressed'); }, {passive:true});
+btn.addEventListener('mousedown', e => { if(GUARD.isTouch) return; btn.classList.add('pressed'); doClick(e.clientX, e.clientY); });
+btn.addEventListener('mouseup',   () => { if(!GUARD.isTouch) btn.classList.remove('pressed'); });
 
 // ── Клик засчитан ─────────────────────────────────────
 function doClick(cx, cy){
@@ -481,12 +846,10 @@ function doClick(cx, cy){
   const mult = getMultiplier(currLevel);
 
   S.coins = parseFloat((S.coins + mult).toFixed(1));
-
   sndTap();
   if(navigator.vibrate) navigator.vibrate(8);
   if(tg?.HapticFeedback) tg.HapticFeedback.impactOccurred('light');
 
-  // Каждые 1000 кликов = 50 монет
   if(S.clicks % 1000 === 0){
     S.coins = parseFloat((S.coins + 50).toFixed(1));
     sndCoin();
@@ -494,13 +857,11 @@ function doClick(cx, cy){
     showToast('🎉 +50 монет за 1000 кликов!');
   }
 
-  // Новый уровень
   if(currLevel > prevLevel && currLevel > S.maxLevel){
     S.maxLevel = currLevel;
     onLevelUp(currLevel);
   }
 
-  // Float +mult
   const f = document.createElement('div');
   f.className = 'float';
   f.textContent = '+' + mult;
@@ -509,7 +870,6 @@ function doClick(cx, cy){
   document.body.appendChild(f);
   setTimeout(()=>f.remove(), 840);
 
-  // Pulse
   const p = document.createElement('div');
   p.className = 'pulse';
   btn.appendChild(p);
@@ -523,28 +883,22 @@ function doClick(cx, cy){
 function onLevelUp(lvl){
   sndLevelUp();
   if(tg?.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
-
   const mult = getMultiplier(lvl);
   document.getElementById('lvlupTitle').textContent = `УРОВЕНЬ ${lvl}!`;
-
-  // Каждые 5 уровней — бонус монеты + рост множителя
   if(lvl % 5 === 0){
     const bonus = lvl * 5;
     S.coins = parseFloat((S.coins + bonus).toFixed(1));
     save();
-    document.getElementById('lvlupSub').textContent = 'Бонусный уровень! 🌟';
+    document.getElementById('lvlupSub').textContent    = 'Бонусный уровень! 🌟';
     document.getElementById('lvlupReward').textContent = `+${bonus} монет • тап теперь +${mult}`;
   } else {
-    document.getElementById('lvlupSub').textContent = 'Ты становишься сильнее!';
+    document.getElementById('lvlupSub').textContent    = 'Ты становишься сильнее!';
     document.getElementById('lvlupReward').textContent = `Тап теперь приносит ${mult} монеты`;
   }
-
   document.getElementById('lvlup').classList.add('show');
 }
 
-function closeLvlup(){
-  document.getElementById('lvlup').classList.remove('show');
-}
+function closeLvlup(){ document.getElementById('lvlup').classList.remove('show'); }
 
 // ── UI ────────────────────────────────────────────────
 const RANKS = [
@@ -561,25 +915,23 @@ function updateGame(){
   const lvl  = getLevel(S.clicks);
   const mult = getMultiplier(lvl);
   const nb   = getNextBonusLevel(lvl);
-
-  document.getElementById('clickCount').textContent = S.clicks.toLocaleString();
-  document.getElementById('coinCount').textContent  = S.coins.toFixed(1);
-  document.getElementById('rubCount').textContent   = Math.floor(S.coins/10);
+  document.getElementById('clickCount').textContent    = S.clicks.toLocaleString();
+  document.getElementById('coinCount').textContent     = S.coins.toFixed(1);
+  document.getElementById('rubCount').textContent      = Math.floor(S.coins/10);
   const ic = S.clicks % 1000;
-  document.getElementById('progressFill').style.width = (ic/10)+'%';
-  document.getElementById('progressLabel').textContent = `${ic} / 1 000`;
-  document.getElementById('levelBadge').textContent = `⚡ LVL ${lvl}`;
-  document.getElementById('multVal').textContent = `+${mult}`;
-  document.getElementById('nextBonus').textContent = `LVL ${nb}`;
+  document.getElementById('progressFill').style.width  = (ic/10)+'%';
+  document.getElementById('progressLabel').textContent  = `${ic} / 1 000`;
+  document.getElementById('levelBadge').textContent     = `⚡ LVL ${lvl}`;
+  document.getElementById('multVal').textContent        = `+${mult}`;
+  document.getElementById('nextBonus').textContent      = `LVL ${nb}`;
 }
 
 function updateProfile(){
-  const user = tg?.initDataUnsafe?.user;
-  if(user){
-    document.getElementById('pName').textContent = user.first_name+(user.last_name?' '+user.last_name:'');
-    document.getElementById('pSub').textContent  = user.username?'@'+user.username:'ID: '+user.id;
-    if(user.photo_url)
-      document.getElementById('avatar').innerHTML=`<img src="${user.photo_url}">`;
+  if(tgUser){
+    document.getElementById('pName').textContent = MY_NAME;
+    document.getElementById('pSub').textContent  = tgUser.username ? '@'+tgUser.username : 'ID: '+tgUser.id;
+    if(tgUser.photo_url)
+      document.getElementById('avatar').innerHTML=`<img src="${tgUser.photo_url}">`;
   }
   document.getElementById('psClicks').textContent = S.clicks.toLocaleString();
   document.getElementById('psCoins').textContent  = S.coins.toFixed(1);
@@ -617,7 +969,6 @@ document.getElementById('wdBtn').addEventListener('click', () => {
   const inputVal = parseFloat(document.getElementById('wdInput').value);
   let amt = isNaN(inputVal) ? Math.floor(S.coins) : Math.min(Math.floor(inputVal), Math.floor(S.coins));
   if(amt < 100){ showToast('Минимум 100 монет!'); return; }
-
   S.coins = parseFloat((S.coins - amt).toFixed(1));
   S.withdrawn += amt;
   const d = new Date();
@@ -626,15 +977,11 @@ document.getElementById('wdBtn').addEventListener('click', () => {
     date: d.toLocaleString('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})
   });
   save();
-
-  if(tg) tg.sendData(JSON.stringify({action:'withdraw',coins:amt,clicks:S.clicks,userId:tg.initDataUnsafe?.user?.id}));
+  if(tg) tg.sendData(JSON.stringify({action:'withdraw',coins:amt,clicks:S.clicks,userId:tgUser?.id}));
   sndCoin();
-
   document.getElementById('wdInput').value = '';
   updateProfile();
   updateGame();
-
-  // Тост с автоочисткой 3 сек
   showToast(`✅ ${amt} монет отправлено!`);
 });
 
@@ -645,9 +992,10 @@ function switchTab(name){
   document.getElementById('page-'+name).classList.add('active');
   document.getElementById('tab-'+name).classList.add('active');
   if(name==='profile') updateProfile();
+  if(name==='top' && !_topLoaded) loadTop();
 }
 
-// ── Toast (с таймером, не висит) ──────────────────────
+// ── Toast ──────────────────────────────────────────────
 let toastTimer = null;
 function showToast(msg){
   const t = document.getElementById('toast');
@@ -657,7 +1005,7 @@ function showToast(msg){
   toastTimer = setTimeout(()=>t.classList.remove('show'), 2800);
 }
 
-// ── Reset ────────────────────────────────────────────
+// ── Reset ─────────────────────────────────────────────
 function resetAll(){
   if(!confirm("Сбросить весь прогресс? Это нельзя отменить!")) return;
   ["cc_clicks","cc_coins","cc_withdrawn","cc_history","cc_maxlvl"].forEach(k=>localStorage.removeItem(k));
@@ -671,6 +1019,8 @@ function resetAll(){
 // Init
 updateGame();
 updateProfile();
+// Сохраним себя в Firebase при старте (через 3 сек, чтоб не блокировать)
+setTimeout(fbSavePlayer, 3000);
 </script>
 </body>
 </html>
